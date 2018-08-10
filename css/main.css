@@ -128,13 +128,11 @@ h3 {
   h2.lg-heading,
   h3.lg-heading {
     font-size: 2rem;
-    text-shadow: 1px 1px 1px #444;
     text-align: center; }
   h1.sm-heading,
   h2.sm-heading,
   h3.sm-heading {
     font-size: 20px;
-    text-shadow: 1px 1px 1px #444;
     text-align: center; }
 
 a {
@@ -173,8 +171,7 @@ main {
   margin-right: 1rem;
   min-height: calc(100vh - 60px); }
   #about h1.about-lg-heading {
-    font-size: 4rem;
-    text-shadow: 1px 2px 5px #333333; }
+    font-size: 4rem; }
 
 .about-info {
   display: grid;
@@ -342,7 +339,6 @@ i.icon-contact {
     min-height: calc(100vh - 60px); }
     #portfolio h1.portfolio-lg-heading {
       font-size: 4rem;
-      text-shadow: 1px 2px 5px #333333;
       text-align: center;
       padding-bottom: 2rem; } }
 
@@ -355,6 +351,8 @@ i.icon-contact {
       width: 130px;
       height: 130px;
       background-size: cover; }
+  h2.sm-heading {
+    font-size: 16px; }
   #about-page {
     margin: -7px; }
   #about {
@@ -367,8 +365,7 @@ i.icon-contact {
       width: 250px;
       height: 250px; }
     #about h1.about-lg-heading {
-      font-size: 3.5rem;
-      text-shadow: 1px 2px 5px #333333;
+      font-size: 2rem;
       text-align: center; }
   .portfolio {
     grid-template-columns: 1fr; }
@@ -381,6 +378,5 @@ i.icon-contact {
     min-height: calc(100vh - 60px); }
     #portfolio h1.portfolio-lg-heading {
       font-size: 2.5rem;
-      text-shadow: 1px 2px 5px #333333;
       text-align: center;
       padding-bottom: 2rem; } }
