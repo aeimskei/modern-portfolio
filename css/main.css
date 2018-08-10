@@ -226,7 +226,6 @@ main {
   min-height: calc(100vh - 60px); }
   #portfolio h1.portfolio-lg-heading {
     font-size: 4rem;
-    text-shadow: 1px 2px 5px #333333;
     text-align: center;
     padding-bottom: 2rem; }
 
