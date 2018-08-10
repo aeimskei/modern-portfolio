@@ -1,0 +1,271 @@
+// =====================================================
+// Import partial scss files
+// =====================================================
+@import 'config';
+@import 'menu';
+
+// =====================================================
+// Command line: npm run sass
+// =====================================================
+
+// =====================================================
+// Box-sizing to layout borders
+// =====================================================
+
+* {
+  box-sizing: border-box;
+}
+
+// =====================================================
+// Body
+// =====================================================
+
+body {
+  @include background;
+  background: $primary-color;
+  color: #DADADC;
+  height: 100%;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  // line-height: 1.5;
+}
+
+// =====================================================
+// Headings
+// =====================================================
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  // this is the same if we did another as h1.ld-heading, but here, it's nested
+  &.lg-heading {
+    font-size: 2rem;
+    text-align: center;
+  }
+  &.sm-heading {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+// =====================================================
+// All Links
+// =====================================================
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+// =====================================================
+// Header
+// =====================================================
+
+header {
+  position: fixed; // always at the top
+  z-index: 2; // keep it in front, if 1 arrangement is behind
+  width: 100%; // stretch across whole screen
+}
+
+.text-secondary {
+  color: $secondary-color;
+}
+
+// =====================================================
+// Icons
+// =====================================================
+
+main {
+  padding: 6rem 1rem; // all around
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  .icon {
+    margin-top: 1rem; // push down
+    // each icon is wrapped in a tag
+    a {
+      padding: 0.4rem;
+      &:hover {
+        color: $secondary-color;
+        @include easeOut();
+      }
+    }
+  }
+
+  &#home {
+    overflow: hidden; // always hide scrollbar
+    h1 {
+      margin-top: 20vh; // vh stand for viewport height, think of height as a 100 slices across the screen, 20vh will take 20 of those slices
+    }
+  }
+}
+
+// =====================================================
+// Grid CSS Template for About page
+// =====================================================
+
+#about {
+  padding: 5rem; // all around
+  height: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  min-height: calc(100vh - 60px); // creates a sticky footer
+
+  h1.about-lg-heading {
+    font-size: 4rem;
+  }
+}
+
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:  // this is for visual rep you want to display
+  'bioimage bio bio' // stretch two column
+  'job1 job2 job3'; // stretch three column
+  grid-template-columns: repeat(3, 1fr);// define grid template columns, repeat function 3 * 1fr
+
+  .bio-image {
+    grid-area: bioimage;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
+    box-shadow: 5px 10px 30px #333333;
+  }
+  
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  i.fa-users {
+    padding-left: 5px;
+  }
+
+  h5.proj-role {
+    color: $secondary-color;
+  }
+  
+  .job-1 {
+    grid-area: job1;
+  }
+  
+  .job-2 {
+    grid-area: job2;
+  }
+  
+  .job-3 {
+    grid-area: job3;
+  }
+  
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5rem;
+    border-bottom: $secondary-color 5px solid;
+  }
+}
+
+// =====================================================
+// Portfolio Page
+// =====================================================
+
+.portfolio {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  img {
+    width: 100%;
+    border: 5px #DADADC solid;
+
+    &:hover {
+      opacity: 0.5;
+      border-color: $secondary-color;
+      @include easeOut;
+    }
+  }
+}
+
+#portfolio {
+  padding: 5rem; // all around
+  height: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  min-height: calc(100vh - 60px); // creates a sticky footer
+
+  h1.portfolio-lg-heading {
+    font-size: 4rem;
+    text-align: center;
+    padding-bottom: 2rem;
+  }
+}
+
+// =====================================================
+// Contact Page
+// =====================================================
+
+i.icon-contact {
+  align-items: center;
+  &:hover {
+    color: $secondary-color;
+    @include easeOut();
+  }
+}
+
+// =====================================================
+// Button Styles
+// =====================================================
+
+.btn {
+  // create basic styles for both buttons and then
+  // extend this class into btn-light and btn-dark in Sass
+  display: block;
+  padding: 0.5rem 1rem;
+  border: 0;
+  margin-bottom: 0.3rem;
+  text-align: center;
+  &:hover {
+    background: $secondary-color;
+    color: #fff;
+  }
+
+  span.font-style {
+    font-family: 'Raleway', sans-serif;
+    padding-left: 4px;
+  }
+}
+
+.btn-dark {
+  @extend .btn;
+  background: darken($primary-color, 50);
+  color: #DADADA;
+}
+
+.btn-light {
+  @extend .btn;
+  background: lighten($primary-color, 50);
+  color: #333;
+}
+
+// =====================================================
+// Footer
+// =====================================================
+
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  height: 60px;
+  // create a sticky footer to stick on bottom, go to main tag
+}
+
+// =====================================================
+// Run mobile Media Queries later
+// =====================================================
+@import 'mobile';

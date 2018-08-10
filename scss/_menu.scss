@@ -1,0 +1,147 @@
+// =====================================================
+// Menu button
+// =====================================================
+
+.menu-btn {
+  position: absolute; // corner
+  z-index: 3; // arrange top
+  right: 35px;
+  top: 35px;
+  cursor: pointer; // when hover turn into pointer
+  @include easeOut; // that fade function
+
+  .btn-line {
+    width: 28px;
+    height: 3px;
+    margin: 0 0 5px 0;
+    background: #fff;
+    @include easeOut;
+  } 
+  
+  // Rotate into X with Menu lines
+  &.close {
+    transform: rotate(180deg);
+
+    .btn-line {
+      // Line 1 - Rotate
+      &:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+        background: gray;
+      } // Line 2 - Hide
+      &:nth-child(2) {
+        opacity: 0;
+      } // Line 3 - Rotate
+      &:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
+        background: gray;
+      }
+    }
+
+  }
+}
+
+// Menu Overlay
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+
+  // this take cares of menu list showing or not
+  &.show {
+    visibility: visible;
+  }
+
+  // &-branding means it's continuing atttachment from .menu top brack
+  // reps .menu-branding, but nested version
+  &-branding, 
+  &-nav {
+    display: flex;
+    flex-flow: column wrap; // goes up and down
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 50%;
+    height: 100vh; // take up the whole space
+    overflow: hidden; // to hide scroll bar
+  }
+
+  // nav menu list
+  &-nav {
+    margin: 0;
+    padding: 0;
+    background: lighten(#DADADC, 5);
+    // opacity: 0.9;
+    list-style: none; // gets rid of bullet points
+    transform: translate3d(0, -100%, 0); // -100% pushes up
+    @include easeOut;
+
+    &.show {
+      // Slide in from top
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  // nav branding
+  &-branding {
+    background: lighten(#fff, 5);
+    transform: translate3d(0, 100%, 0); // 100% pushes down
+    @include easeOut;
+
+    // Slide in from bottom
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .portrait {
+      width: 400px;
+      height: 400px;
+      background: url('../img/profile.png');
+      background-size: cover;
+      border-radius: 50%;
+      border: solid 5px $secondary-color;
+      opacity: 1;
+      box-shadow: 1px 10px 50px #919191;
+    }
+  }
+
+  .nav-item {
+    transform: translate3d(600px, 0, 0); // move to the right 
+    @include easeOut;
+
+    // Slide in from right
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+
+    // color nav link
+    &.current > a {
+      color: $secondary-color;
+    }
+  }
+
+  // style nav links text
+  .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: 300;
+    color: gray;
+    text-decoration: none;
+    @include easeOut;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+// Sass for-loop
+// Delay each nav item slide by 0.1s
+@for $x from 1 through 5 {
+  .nav-item:nth-child(#{$x}) {
+    transition-delay: $x * 0.2s;
+  }
+}
